@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Book } from '../shared/book';
 
 @Component({
@@ -8,6 +9,8 @@ import { Book } from '../shared/book';
 })
 export class BookComponent implements OnInit {
   @Input() book?: Book;
+  @Output() rateUp = new EventEmitter<Book>();
+  @Output() rateDown = new EventEmitter<Book>();
 
   constructor() {
     console.log('CTOR', this.book);
@@ -18,8 +21,12 @@ export class BookComponent implements OnInit {
 
   }
 
-  doRateUp() {}
+  doRateUp() {
+    this.rateUp.emit(this.book);
+  }
 
-  doRateDown() {}
+  doRateDown() {
+    this.rateDown.emit(this.book);
+  }
 
 }
