@@ -17,4 +17,9 @@ export class BookComponent implements OnInit {
     console.log('NGONINIT', this.book);
 
   }
+
+  doRateUp() {}
+
+  doRateDown() {}
+
 }
