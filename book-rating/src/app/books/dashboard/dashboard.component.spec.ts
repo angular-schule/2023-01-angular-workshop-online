@@ -8,12 +8,18 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ DashboardComponent ],
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(DashboardComponent);
+    // Klassen-Instanz
     component = fixture.componentInstance;
+
+    // DOM-Element der Komponente
+    // fixture.nativeElement.querySelector()
+
+
     fixture.detectChanges();
   });
 
