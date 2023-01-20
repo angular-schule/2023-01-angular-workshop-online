@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../shared/book';
 
 
 @Component({
   selector: 'br-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent implements OnInit {
   @Input() book?: Book;
@@ -16,11 +17,11 @@ export class BookComponent implements OnInit {
   @Input() MIN = 1;
 
   constructor() {
-    console.log('CTOR', this.book);
+    // console.log('CTOR', this.book);
   }
 
   ngOnInit() {
-    console.log('NGONINIT', this.book);
+    // console.log('NGONINIT', this.book);
 
   }
 
@@ -30,6 +31,11 @@ export class BookComponent implements OnInit {
 
   doRateDown() {
     this.rateDown.emit(this.book);
+  }
+
+
+  log() {
+    console.log('LOG', Date.now());
   }
 
 }
