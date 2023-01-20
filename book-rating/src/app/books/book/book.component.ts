@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
 import { Book } from '../shared/book';
+
 
 @Component({
   selector: 'br-book',
@@ -11,6 +11,9 @@ export class BookComponent implements OnInit {
   @Input() book?: Book;
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
+
+  @Input() MAX = 5;
+  @Input() MIN = 1;
 
   constructor() {
     console.log('CTOR', this.book);
