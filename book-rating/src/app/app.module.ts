@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BooksModule } from './books/books.module';
     BrowserModule,
     AppRoutingModule,
     BooksModule,
-    HttpClientModule // provideHttpClient() für Standalone Components
+    HttpClientModule, // provideHttpClient() für Standalone Components
+    RouterModule.forChild([{ path: '**', redirectTo: '/books' }]) // Wildcard-Route. Muss ganz guten stehen!
   ],
   providers: [],
   bootstrap: [AppComponent]
