@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./book-create.component.scss']
 })
 export class BookCreateComponent {
-  myText = 'Hallo Welt!';
-  book = {
-    isbn: '',
-    title: ''
-  }
+
 }
