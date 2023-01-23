@@ -2,6 +2,16 @@
   <div class="form-group">
     <label for="isbnInput">ISBN</label>
     <input type="text" formControlName="isbn" class="form-control" id="isbnInput">
+
+    <div class="feedback-error" *ngIf="isInvalid('isbn')">Die ISBN ist ungültig.</div>
+    <div class="feedback-error" *ngIf="hasError('isbn', 'required')">Die ISBN muss eingegeben werden.</div>
+    <div class="feedback-error" *ngIf="hasError('isbn', 'minlength')">Die ISBN ist zu kurz.</div>
+
+    <pre>{{ bookForm.controls.isbn.errors | json }}</pre>
+
+    <!--<br-form-errors controlName="isbn" [messages]="{
+      minlength: 'ZUKURZ', required: 'NICHTDA'
+    }"></br-form-errors>-->
   </div>
 
   <div class="form-group">

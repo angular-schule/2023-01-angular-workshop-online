@@ -38,6 +38,29 @@ export class BookCreateComponent {
       validators: Validators.min(0)
     }),
   });
+
+  isInvalid(controlName: string): boolean {
+    const control = this.bookForm.get(controlName);
+    if (!control) {
+      return false;
+    }
+
+    return control.touched && control.invalid;
+
+    // Alternativ:
+    // return !!control && control.touched && control.invalid;
+  }
+
+  hasError(controlName: string, errorCode: string): boolean {
+    const control = this.bookForm.get(controlName);
+    if (!control) {
+      return false;
+    }
+
+    // return control.getError(errorCode) && control.touched;
+    return control.hasError(errorCode) && control.touched;
+    // return control.errors[errorCode] && control.touched;
+  }
 }
 
 /*
