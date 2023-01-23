@@ -23,7 +23,7 @@ export class BookDetailsComponent {
       const isbn = params.get('isbn')!; // Non-Null Assertion
       this.bs.getSingle(isbn).subscribe(book => {
         this.book = book;
-      })
+      });
     })
 
     // AUFGABE
