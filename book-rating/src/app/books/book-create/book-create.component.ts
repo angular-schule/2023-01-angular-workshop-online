@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
@@ -40,9 +40,27 @@ export class BookCreateComponent {
       nonNullable: true,
       validators: Validators.min(0)
     }),
+
+    /*authors: new FormArray([
+      new FormGroup({
+        url: new FormControl('', { nonNullable: true }),
+        title: new FormControl('', { nonNullable: true }),
+      }),
+      new FormGroup({
+        url: new FormControl('', { nonNullable: true }),
+        title: new FormControl('', { nonNullable: true }),
+      })
+    ])*/
   });
 
   constructor(private bs: BookStoreService, private router: Router) {}
+
+  /*addAuthor() {
+    this.bookForm.controls.authors.push(new FormGroup({
+      url: new FormControl('', { nonNullable: true }),
+      title: new FormControl('', { nonNullable: true }),
+    }))
+  }*/
 
   isInvalid(controlName: string): boolean {
     const control = this.bookForm.get(controlName);
