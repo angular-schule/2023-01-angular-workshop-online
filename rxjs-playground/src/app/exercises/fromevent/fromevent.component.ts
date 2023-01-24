@@ -20,7 +20,22 @@ export class FromeventComponent {
 
     /******************************/
 
-    
+    const width$ = fromEvent(window, 'resize').pipe(
+      debounceTime(1000),
+      map(() => window.innerWidth),
+      startWith(window.innerWidth),
+    );
+
+    // map(e => (e.target as Window).innerWidth),
+
+    width$.subscribe(e => {
+      this.currentWidth = e;
+    })
+
+
+    /*const myMDO = map(() => window.innerWidth)(debounceTime(1000)(fromEvent(window, 'resize')))
+    startWith(window.innerWidth)(myMDO)*/
+
     /******************************/
   }
 

@@ -20,6 +20,15 @@ export class GameScoreComponent {
 
     /******************************/
 
+    // [1,2,3,4,5].reduce((acc, value) => acc + value) // 15
+
+
+    this.score$.pipe(
+      scan((acc, item) => acc + item, 0)
+    ).subscribe(score => {
+      this.currentScore = score;
+    })
+
 
     /******************************/
 
