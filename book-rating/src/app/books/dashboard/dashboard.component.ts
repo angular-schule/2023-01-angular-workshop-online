@@ -17,7 +17,7 @@ export class DashboardComponent {
   loading$ = this.store.select(selectLoading);
   books$ = this.store.select(selectBooks);
 
-  constructor(private rs: BookRatingService, private store: Store) {
+  constructor(private rs: BookRatingService, private store: Store, private bs: BookStoreService) {
     this.store.dispatch(loadBooks())
   }
 
@@ -32,6 +32,9 @@ export class DashboardComponent {
   }
 
   private updateList(ratedBook: Book) {
+    this.bs.updateBookRating(ratedBook).subscribe(() => {
+      this.store.dispatch(loadBooks());
+    })
     /*this.books = this.books.map(b => {
       if (b.isbn === ratedBook.isbn) {
         return ratedBook;

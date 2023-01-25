@@ -27,4 +27,8 @@ export class BookStoreService {
   search(term: string): Observable<Book[]> {
     return this.http.get<Book[]>(this.api + '/books/search/' + term);
   }
+
+  updateBookRating(book: Book) {
+    return this.http.post<unknown>(this.api + '/books/' + book.isbn + '/rate', { rating: book.rating });
+  }
 }
