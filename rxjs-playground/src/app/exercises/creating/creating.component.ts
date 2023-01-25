@@ -25,6 +25,7 @@ export class CreatingComponent {
 
     // of('A', 'B', 'C')
     // from([1,2,3,4,5])
+    // from(Promise.resolve())
     // interval(1000) // ---0---1---2---3---4---5---...
     // timer(2000)    // ------0|
     // timer(4000, 1000) // ------------0---1---2---3---4---5---...
@@ -38,6 +39,15 @@ export class CreatingComponent {
       complete: () => this.log('COMPLETE')
     })
 
+
+
+    function myOf(arg1: string, arg2: string) {
+      return new Observable(sub => {
+        sub.next(arg1);
+        sub.next(arg2);
+        sub.complete();
+      })
+    }
 
 
 

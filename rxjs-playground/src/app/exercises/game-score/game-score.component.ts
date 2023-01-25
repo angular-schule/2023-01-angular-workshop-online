@@ -24,7 +24,7 @@ export class GameScoreComponent {
 
 
     this.score$.pipe(
-      scan((acc, item) => acc + item, 0)
+      scan((acc, item) => acc + item, 100)
     ).subscribe(score => {
       this.currentScore = score;
     })

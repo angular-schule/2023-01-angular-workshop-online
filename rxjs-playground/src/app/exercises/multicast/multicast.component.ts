@@ -19,7 +19,7 @@ export class MulticastComponent implements OnDestroy {
   constructor(private mvs: MeasureValuesService, private es: ExerciseService) {
     /**************!!**************/
 
-    this.measureValues$ = this.mvs.getValues().pipe(shareReplay(1));
+    this.measureValues$ = this.mvs.getValues().pipe(share());
 
     // this.measureValues$ = new ReplaySubject(5);
     // this.mvs.getValues().subscribe(this.measureValues$);
