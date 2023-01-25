@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   // pathMatch full ist notwendig bei Weiterleitung vom leeren Pfad
-  // { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: '', redirectTo: '/books', pathMatch: 'full' },
   {
     path: 'books',
     loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
