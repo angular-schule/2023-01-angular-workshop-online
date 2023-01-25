@@ -20,7 +20,8 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]), // provideHttpClient() für Standalone Components
+    EffectsModule.forRoot([]),
+    // provideHttpClient() für Standalone Components
     // RouterModule.forChild([{ path: '**', redirectTo: '/books' }]) // Wildcard-Route. Muss ganz guten stehen!
   ],
   providers: [],

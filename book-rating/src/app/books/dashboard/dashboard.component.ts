@@ -1,8 +1,11 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookStoreService } from '../shared/book-store.service';
+import { loadBooks } from '../store/book.actions';
+import { selectBooks, selectLoading } from '../store/book.selectors';
 
 @Component({
   selector: 'br-dashboard',
@@ -11,11 +14,11 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class DashboardComponent {
   books: Book[] = [];
+  loading$ = this.store.select(selectLoading);
+  books$ = this.store.select(selectBooks);
 
-  constructor(private rs: BookRatingService, private bs: BookStoreService) {
-    this.bs.getAll().subscribe(books => {
-      this.books = books;
-    });
+  constructor(private rs: BookRatingService, private store: Store) {
+    this.store.dispatch(loadBooks())
   }
 
   doRateUp(book: Book) {
@@ -29,13 +32,13 @@ export class DashboardComponent {
   }
 
   private updateList(ratedBook: Book) {
-    this.books = this.books.map(b => {
+    /*this.books = this.books.map(b => {
       if (b.isbn === ratedBook.isbn) {
         return ratedBook;
       }
 
       return b;
-    });
+    });*/
 
     // Alternativ:
     // this.books = this.books.map(b => b.isbn === ratedBook.isbn ? ratedBook : b);

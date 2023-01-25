@@ -1,5 +1,8 @@
+<div *ngIf="loading$ | async">LADEN …</div>
+
+
 <br-book
-  *ngFor="let b of books"
+  *ngFor="let b of books$ | async"
   [book]="b"
   (rateUp)="doRateUp($event)"
   (rateDown)="doRateDown($event)" />
